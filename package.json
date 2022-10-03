@@ -1,7 +1,7 @@
 {
-  "name": "vanillajs-datepicker",
-  "version": "1.2.0",
-  "description": "A vanilla JavaScript remake of bootstrap-datepicker for Bulma and other CSS frameworks",
+  "name": "tailwind-datepicker-react",
+  "version": "1.0.0",
+  "description": "A tailwindcss/flowbite datepicker component built as a react component with types",
   "type": "module",
   "module": "js/main.js",
   "exports": {
@@ -32,14 +32,13 @@
     "url": "git+https://github.com/mymth/vanillajs-datepicker.git"
   },
   "keywords": [
-    "datepicker",
-    "bulma",
-    "bootstrap",
-    "vanilla",
-    "javascript",
-    "scss"
+    "tailwindcss",
+    "react",
+    "nextjs",
+    "flowbite",
+    "datepicker"
   ],
-  "author": "Hidenao Miyamoto",
+  "author": "OMikkel",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mymth/vanillajs-datepicker/issues"
@@ -47,7 +46,6 @@
   "homepage": "https://github.com/mymth/vanillajs-datepicker#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.1",
-    "autoprefixer": "^10.4.0",
     "bootstrap": "^5.1.3",
     "bootstrap4": "npm:bootstrap@^4.6.1",
     "bulma": "^0.9.3",
@@ -58,7 +56,6 @@
     "jsdom": "^19.0.0",
     "jsdom-simulant": "^1.1.2",
     "mocha": "^9.1.3",
-    "postcss": "^8.4.5",
     "postcss-prettify": "^0.3.4",
     "rollup": "^2.61.1",
     "sass": "^1.45.1",
