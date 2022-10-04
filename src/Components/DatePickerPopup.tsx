@@ -1,5 +1,5 @@
-import { forwardRef, useContext } from "react"
-import { dayOfTheWeekOf, firstDateOfMonth } from "../utils/date"
+import React, { forwardRef, useContext, ForwardedRef } from "react"
+import { dayOfTheWeekOf, firstDateOfMonth } from "../Utils/date"
 import { ButtonClear, ButtonNextMonth, ButtonPrevMonth, ButtonSelectMonth, ButtonToday } from "./Buttons"
 import { IDatePickerProps } from "./DatePicker"
 import { DatePickerContext } from "./DatePickerProvider"
@@ -8,7 +8,7 @@ import Decades from "./Views/Decades"
 import Months from "./Views/Months"
 import Years from "./Views/Years"
 
-const DatePickerPopup = forwardRef<HTMLDivElement, IDatePickerProps>(({ title, actionButtons }: IDatePickerProps, ref) => {
+const DatePickerPopup = forwardRef<HTMLDivElement, IDatePickerProps>(({ title, actionButtons }: IDatePickerProps, ref: ForwardedRef<HTMLDivElement>) => {
 	const { selectedMonth, selectedYear, view } = useContext(DatePickerContext)
 
 	const firstOfMonth = firstDateOfMonth(selectedYear, selectedMonth, 1)
@@ -17,7 +17,7 @@ const DatePickerPopup = forwardRef<HTMLDivElement, IDatePickerProps>(({ title, a
 	return (
 		<div ref={ref} className="absolute z-50 block pt-2">
 			<div className="inline-block p-4 bg-white rounded-lg shadow-lg dark:bg-gray-700">
-				<div className="">
+				<div>
 					{title && <div className="px-2 py-3 font-semibold text-center bg-white dark:bg-gray-700 dark:text-white">{title}</div>}
 					<div className="flex justify-between mb-2">
 						<ButtonPrevMonth />
@@ -32,11 +32,9 @@ const DatePickerPopup = forwardRef<HTMLDivElement, IDatePickerProps>(({ title, a
 					{view === "decades" && <Decades />}
 				</div>
 				{actionButtons && (
-					<div className="">
-						<div className="flex mt-2 space-x-2">
-							<ButtonToday />
-							<ButtonClear />
-						</div>
+					<div className="flex mt-2 space-x-2">
+						<ButtonToday />
+						<ButtonClear />
 					</div>
 				)}
 			</div>

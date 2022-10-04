@@ -1,4 +1,4 @@
-import { Views } from "../components/DatePickerProvider"
+import { Views } from "../Components/DatePickerProvider"
 
 export const firstDateOfMonth = (selectedYear: number, selectedMonth: number, date: number): number => {
 	const newDate = new Date(0)

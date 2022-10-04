@@ -1,10 +1,8 @@
-import { NextComponentType } from "next"
-import { setHttpAgentOptions } from "next/dist/server/config"
-import { useContext } from "react"
-import { addMonths, getFormattedDate, goToPrevNext, startOfYearPeriod } from "../utils/date"
+import React, { useContext } from "react"
+import { getFormattedDate, goToPrevNext, startOfYearPeriod } from "../Utils/date"
 import { DatePickerContext, Views } from "./DatePickerProvider"
 
-export const ButtonPrevMonth: NextComponentType = () => {
+export const ButtonPrevMonth = () => {
 	const { selectedDate, setSelectedDate, view } = useContext(DatePickerContext)
 	return (
 		<button
@@ -19,7 +17,7 @@ export const ButtonPrevMonth: NextComponentType = () => {
 	)
 }
 
-export const ButtonSelectMonth: NextComponentType = () => {
+export const ButtonSelectMonth = () => {
 	const { selectedDate, view, setView } = useContext(DatePickerContext)
 
 	const calculateView = (): Views => {
@@ -43,7 +41,7 @@ export const ButtonSelectMonth: NextComponentType = () => {
 	)
 }
 
-export const ButtonNextMonth: NextComponentType = () => {
+export const ButtonNextMonth = () => {
 	const { selectedDate, setSelectedDate, view } = useContext(DatePickerContext)
 	return (
 		<button
@@ -58,7 +56,7 @@ export const ButtonNextMonth: NextComponentType = () => {
 	)
 }
 
-export const ButtonToday: NextComponentType = () => {
+export const ButtonToday = () => {
 	const { setSelectedDate, setShowSelectedDate, setView } = useContext(DatePickerContext)
 	return (
 		<button
@@ -75,7 +73,7 @@ export const ButtonToday: NextComponentType = () => {
 	)
 }
 
-export const ButtonClear: NextComponentType = () => {
+export const ButtonClear = () => {
 	const { setShowSelectedDate } = useContext(DatePickerContext)
 	return (
 		<button
