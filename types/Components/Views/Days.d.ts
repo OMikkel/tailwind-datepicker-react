@@ -4,3 +4,4 @@ interface IDaysProps {
 }
 declare const Days: ({ start }: IDaysProps) => JSX.Element;
 export default Days;
+//# sourceMappingURL=Days.d.ts.map

@@ -14,6 +14,7 @@ interface IDatePickerContext {
 export declare type Views = "days" | "months" | "years" | "decades";
 export declare const DatePickerContext: React.Context<IDatePickerContext>;
 declare const DatePickerProvider: ({ children }: {
-    children: ReactNode;
+    children: any;
 }) => JSX.Element;
 export default DatePickerProvider;
+//# sourceMappingURL=DatePickerProvider.d.ts.map

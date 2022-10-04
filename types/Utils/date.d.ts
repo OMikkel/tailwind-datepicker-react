@@ -8,3 +8,4 @@ export declare const addYears: (date: Date, amount: number) => number;
 export declare const getFormattedDate: (date: Date | number, options?: Intl.DateTimeFormatOptions) => string;
 export declare const goToPrevNext: (view: Views, date: Date, direction: number) => number;
 export declare const startOfYearPeriod: (date: Date, years: number) => number;
+//# sourceMappingURL=date.d.ts.map

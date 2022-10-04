@@ -66,6 +66,6 @@ export const goToPrevNext = (view: Views, date: Date, direction: number): number
 }
 
 export const startOfYearPeriod = (date: Date, years: number): number => {
-	const year = new Date(date).getFullYear()
+	const year = date.getFullYear()
 	return Math.floor(year / years) * years
 }

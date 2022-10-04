@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { DatePicker } from "tailwind-datepicker-react"
+import DatePicker from "tailwind-datepicker-react"
 import ThemeSelector from "../components/ThemeSelector"
 const Home: NextPage = () => {
 	return (
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
 				<label htmlFor="date" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
 					Date
 				</label>
-				<DatePicker title="Ansættelsesdato" actionButtons={true} />
+				<DatePicker title="Datepicker Custom Title" actionButtons={true} />
 			</div>
 		</div>
 	)
