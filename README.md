@@ -1,3 +1,7 @@
+![NPM Version](https://img.shields.io/npm/v/tailwind-datepicker-react?color=green)
+![NPM Minified Size](https://img.shields.io/bundlephobia/min/tailwind-datepicker-react)
+![GitHub deployments](https://img.shields.io/github/deployments/OMikkel/tailwind-datepicker-react/github-pages?label=Demo%20Website%20Deployment)
+
 # Tailwind-datepicker-react
 
 A Tailwindcss/Flowbite datepicker component built as a React component with types
