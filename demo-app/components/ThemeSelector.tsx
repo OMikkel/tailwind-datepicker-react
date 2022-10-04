@@ -5,7 +5,7 @@ const ThemeSelector = () => {
 	const { theme, setTheme } = useTheme()
 	return (
 		<>
-			{theme == "light" ? (
+			{theme == "light" || !theme ? (
 				<button className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-1 focus:ring-blue-300" onClick={() => setTheme("dark")}>
 					<MoonIcon className="w-6 text-yellow-500" />
 				</button>
