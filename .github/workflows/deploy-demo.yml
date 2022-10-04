@@ -24,18 +24,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Change directory to demo-app
-        run: cd demo-app
       - name: Install packages
+        working-directory: ./demo-app
         run: npm ci
       - name: Build project
+        working-directory: ./demo-app
         run: npm run build
       - name: Export static files
+        working-directory: ./demo-app
         run: npm run export
       - name: Add .nojekyll file
+        working-directory: ./demo-app
         run: touch ./out/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          folder: out
+          folder: ./demo-app/out
