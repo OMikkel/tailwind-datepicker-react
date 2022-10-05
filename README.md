@@ -1,6 +1,6 @@
-![NPM Version](https://img.shields.io/npm/v/tailwind-datepicker-react?color=green)
-![NPM Minified Size](https://img.shields.io/bundlephobia/min/tailwind-datepicker-react)
-![GitHub deployments](https://img.shields.io/github/deployments/OMikkel/tailwind-datepicker-react/github-pages?label=Demo%20Website%20Deployment)
+[![NPM Version](https://img.shields.io/npm/v/tailwind-datepicker-react?color=green)](https://www.npmjs.com/package/tailwind-datepicker-react)
+[![NPM Minified Size](https://img.shields.io/bundlephobia/min/tailwind-datepicker-react)](https://www.npmjs.com/package/tailwind-datepicker-react)
+[![GitHub deployments](https://img.shields.io/github/deployments/OMikkel/tailwind-datepicker-react/github-pages?label=Demo%20Website%20Deployment)](https://omikkel.github.io/tailwind-datepicker-react/)
 
 # Tailwind-datepicker-react
 
