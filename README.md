@@ -6,6 +6,8 @@
 
 A Tailwindcss/Flowbite datepicker component built as a React component with types
 
+Date logic from [VanillaJS-datepicker](https://github.com/mymth/vanillajs-datepicker)
+
 ## [Demo](https://omikkel.github.io/tailwind-datepicker-react/)
 
 ![thumbnail](https://i.imgur.com/k6gVad8.png)
