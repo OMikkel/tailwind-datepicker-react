@@ -1,32 +1,36 @@
-import React, { forwardRef, useContext, useEffect, useRef } from "react"
-import { getFormattedDate } from "../Utils/date"
+import React, { forwardRef, ReactNode, useContext, useEffect, useRef } from "react"
+import { twMerge } from "tailwind-merge"
+import { IOptions } from "../Options"
 import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
 
 export interface IDatePickerProps {
-	title?: string
-	actionButtons?: boolean
-	autoHide?: boolean
+	children?: ReactNode
+	options?: IOptions
+	onChange?: (date: Date) => void
+	show: boolean
+	setShow: (show: boolean) => void
+	classNames?: string
 }
 
-const DatePicker = ({ title, actionButtons = true }: IDatePickerProps) => (
-	<DatePickerProvider>
-		<DatePickerMain title={title} actionButtons={actionButtons} />
-	</DatePickerProvider>
+const DatePicker = ({ children, options, onChange, classNames, show, setShow }: IDatePickerProps) => (
+	<div className={twMerge("w-full", classNames)}>
+		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow}>
+			<DatePickerMain>{children}</DatePickerMain>
+		</DatePickerProvider>
+	</div>
 )
 
-const DatePickerMain = ({ title, actionButtons }: IDatePickerProps) => {
-	const { setShowDatePicker } = useContext(DatePickerContext)
-	const { datePickerShow } = useContext(DatePickerContext)
+const DatePickerMain = ({ children }: { children: ReactNode }) => {
+	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
 	const DatePickerRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (!(InputRef.current && DatePickerRef.current)) return
+			if (!(InputRef?.current && DatePickerRef?.current)) return
 			if (!InputRef.current.contains(event.target as Node) && !DatePickerRef.current.contains(event.target as Node)) {
-				console.log(!InputRef.current.contains(event.target as Node), !DatePickerRef.current.contains(event.target as Node))
-				setShowDatePicker(false)
+				setShow(false)
 			}
 		}
 
@@ -35,46 +39,56 @@ const DatePickerMain = ({ title, actionButtons }: IDatePickerProps) => {
 		return () => {
 			document.removeEventListener("mousedown", (event) => handleClickOutside(event))
 		}
-	}, [DatePickerRef, InputRef, setShowDatePicker])
+	}, [DatePickerRef, InputRef, setShow])
 
 	return (
 		<>
-			<div className="relative">
-				<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-					<CalendarIcon />
+			{children ? (
+				{ children }
+			) : (
+				<div className="relative">
+					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+						<CalendarIcon />
+					</div>
+					<Input ref={InputRef} />
 				</div>
-				<Input ref={InputRef} />
-			</div>
-			{datePickerShow && <DatePickerPopup ref={DatePickerRef} title={title} actionButtons={actionButtons} />}
+			)}
+			{show && <DatePickerPopup ref={DatePickerRef} />}
 		</>
 	)
 }
 
 const Input = forwardRef<HTMLInputElement>((_props, ref) => {
-	const { setShowDatePicker, selectedDate, showSelectedDate } = useContext(DatePickerContext)
+	const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext)
 	return (
 		<input
 			ref={ref}
 			type="text"
 			id="date"
-			className="pl-9 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+			className={twMerge(
+				"pl-9 pr-2.5 py-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+				options?.theme?.input
+			)}
 			placeholder="Select Date"
 			value={selectedDate.getTime() > 0 && showSelectedDate ? getFormattedDate(selectedDate) : ""}
-			onFocus={() => setShowDatePicker(true)}
+			onFocus={() => setShow(true)}
 			readOnly
 		/>
 	)
 })
 Input.displayName = "Input"
 
-const CalendarIcon = () => (
-	<svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-		<path
-			fillRule="evenodd"
-			d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-			clipRule="evenodd"
-		></path>
-	</svg>
-)
+const CalendarIcon = () => {
+	const { options } = useContext(DatePickerContext)
+	return (
+		<svg aria-hidden="true" className={twMerge("w-5 h-5 text-gray-500 dark:text-gray-400", options?.theme?.inputIcon)} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+			<path
+				fillRule="evenodd"
+				d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+				clipRule="evenodd"
+			></path>
+		</svg>
+	)
+}
 
 export default DatePicker

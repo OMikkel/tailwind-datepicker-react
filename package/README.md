@@ -111,7 +111,7 @@ const options = {
     icons: { // () => ReactNode | JSX.Element
         prev: () => <span>Previous</span>,
         next: () => <span>Next</span>,
-    },
+    }
 	datepickerClassNames: "top-12",
 	defaultDate: new Date("2022-01-01"),
 	language: "en",

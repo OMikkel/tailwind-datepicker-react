@@ -39,7 +39,7 @@ export const addYears = (date: Date, amount: number): number => {
 	return expectedMonth === 1 && newDate.getMonth() === 2 ? newDate.setDate(0) : time
 }
 
-export const getFormattedDate = (date: Date | number, options?: Intl.DateTimeFormatOptions): string => {
+export const getFormattedDate = (language: string, date: Date | number, options?: Intl.DateTimeFormatOptions): string => {
 	let defaultOptions: Intl.DateTimeFormatOptions = {
 		day: "numeric",
 		month: "long",
@@ -47,7 +47,7 @@ export const getFormattedDate = (date: Date | number, options?: Intl.DateTimeFor
 	}
 	if (options) defaultOptions = options
 
-	return new Intl.DateTimeFormat("en", defaultOptions).format(date)
+	return new Intl.DateTimeFormat(language, defaultOptions).format(date)
 }
 
 export const goToPrevNext = (view: Views, date: Date, direction: number): number => {

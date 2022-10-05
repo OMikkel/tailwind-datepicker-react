@@ -10,11 +10,11 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"outDir": "dist",
-		"declarationDir": "types",
+		"outDir": "package/dist",
+		"declarationDir": "package/types",
 		"declaration": true,
 		"emitDeclarationOnly": true
 	},
 	"include": ["src/**/*"],
-	"exclude": ["dist/**/*"]
+	"exclude": ["package/dist/**/*"]
 }
