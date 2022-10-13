@@ -124,33 +124,33 @@ const options = {
 }
 
 const DemoComponent = () => {
-    const [show, setShow] = useState<boolean>(false)
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+	const [show, setShow] = useState<boolean>(false)
+	const [selectedDate, setSelectedDate] = useState<any>(null)
 	const handleChange = (selectedDate: Date) => {
-        setSelectedDate(selectedDate)
+		setSelectedDate(selectedDate)
 		console.log(selectedDate)
 	}
-    const handleClose = (state: boolean) => {
-        setShow(state)
-    }
+	const handleClose = (state: boolean) => {
+		setShow(state)
+	}
 
 	return (
 		<div>
-			<Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose} />
-                <div className="...">
+			<Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose}>
+				<div className="...">
 					<div className="...">
 						<CalendarIcon />
 					</div>
-                    <input
-                        type="text"
-                        className="..."
-                        placeholder="Select Date"
-                        value={selectedDate}
-                        onFocus={() => setShow(true)}
-                        readOnly
-                    />
+					<input
+						type="text"
+						className="..."
+						placeholder="Select Date"
+						value={selectedDate}
+						onFocus={() => setShow(true)}
+						readOnly
+					/>
 				</div>
-            </DatePicker>
+			</Datepicker>
 		</div>
 	)
 }
