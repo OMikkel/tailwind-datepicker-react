@@ -17,7 +17,10 @@ const Decades = () => {
 							showSelectedDate && selectedDate.getTime() > 0 && Number(getFormattedDate(selectedDate, { year: "numeric" })) === year
 								? twMerge("bg-blue-700 text-white hover:bg-blue-600", options?.theme?.selected)
 								: ""
-						} ${index == 0 || index == 11 ? twMerge("text-gray-500", options?.theme?.disabledText) : twMerge("text-gray-900", options?.theme?.text)}`}
+						} ${index == 0 || index == 11 ? twMerge("text-gray-500", options?.theme?.disabledText) : twMerge("text-gray-900", options?.theme?.text)}
+                            ${options?.minDate && year < Number(getFormattedDate(options?.minDate, { year: "numeric" })) ? twMerge("text-gray-500", options?.theme?.disabledText) : ""}
+                            ${options?.maxDate && year > Number(getFormattedDate(options?.maxDate, { year: "numeric" })) ? twMerge("text-gray-500", options?.theme?.disabledText) : ""}
+                            `}
 						onClick={() => {
 							changeSelectedDate("date", new Date(addYears(selectedDate, year - selectedDate.getFullYear())))
 							setView("years")
