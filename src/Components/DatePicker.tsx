@@ -1,11 +1,11 @@
-import React, { forwardRef, ReactNode, useContext, useEffect, useRef } from "react"
+import React, { forwardRef, ReactElement, useContext, useEffect, useRef } from "react"
 import { twMerge } from "tailwind-merge"
 import { IOptions } from "../Options"
 import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
 
 export interface IDatePickerProps {
-	children?: ReactNode
+	children?: ReactElement
 	options?: IOptions
 	onChange?: (date: Date) => void
 	show: boolean
@@ -21,7 +21,7 @@ const DatePicker = ({ children, options, onChange, classNames, show, setShow }: 
 	</div>
 )
 
-const DatePickerMain = ({ children }: { children: ReactNode }) => {
+const DatePickerMain = ({ children }: { children?: ReactElement }) => {
 	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
 	const DatePickerRef = useRef<HTMLDivElement>(null)
@@ -44,7 +44,7 @@ const DatePickerMain = ({ children }: { children: ReactNode }) => {
 	return (
 		<>
 			{children ? (
-				{ children }
+				{ ...children }
 			) : (
 				<div className="relative">
 					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

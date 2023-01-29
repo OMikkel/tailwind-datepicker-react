@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import { ReactElement } from "react"
 
 interface ITheme {
 	background: string
@@ -13,8 +13,8 @@ interface ITheme {
 }
 
 interface IIcons {
-	prev: () => ReactNode | JSX.Element
-	next: () => ReactNode | JSX.Element
+	prev: () => ReactElement | JSX.Element
+	next: () => ReactElement | JSX.Element
 }
 
 export interface IOptions {

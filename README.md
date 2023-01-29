@@ -68,7 +68,7 @@ const options = {
 		selected: "",
 	},
 	icons: {
-		// () => ReactNode | JSX.Element
+		// () => ReactElement | JSX.Element
 		prev: () => <span>Previous</span>,
 		next: () => <span>Next</span>,
 	},
@@ -78,7 +78,7 @@ const options = {
 }
 
 const DemoComponent = () => {
-	const [show, setShow] = useState < boolean > false
+	const [show, setShow] = useState <boolean>(false)
 	const handleChange = (selectedDate: Date) => {
 		console.log(selectedDate)
 	}
@@ -115,7 +115,7 @@ const options = {
 		inputIcon: "",
 		selected: "",
 	},
-    icons: { // () => ReactNode | JSX.Element
+    icons: { // () => ReactElement | JSX.Element
         prev: () => <span>Previous</span>,
         next: () => <span>Next</span>,
     },
@@ -159,7 +159,7 @@ const DemoComponent = () => {
 
 ### DatePicker Props
 
-- children?: ReactNode
+- children?: ReactElement
 - options?: [IOptions](###IOptions)
 - onChange?: (date: Date) => void
 - show: boolean
@@ -194,5 +194,5 @@ const DemoComponent = () => {
 
 ### IIcons
 
-- prev: () => ReactNode | JSX.Element
-- next: () => ReactNode | JSX.Element
+- prev: () => ReactElement | JSX.Element
+- next: () => ReactElement | JSX.Element
