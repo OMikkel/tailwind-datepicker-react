@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react"
+import React, { createContext, Dispatch, ReactElement, SetStateAction, useState } from "react"
 import { IOptions } from "../Options"
 import defaultOptions from "../Options"
 import { getFormattedDate as formatDate } from "../Utils/date"
@@ -36,7 +36,7 @@ export const DatePickerContext = createContext<IDatePickerContext>({
 })
 
 interface IDatePickerProviderProps {
-	children: ReactNode
+	children: ReactElement
 	options?: IOptions
 	onChange?: (date: Date) => void
 	show: boolean
