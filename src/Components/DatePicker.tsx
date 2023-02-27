@@ -1,11 +1,11 @@
-import React, { forwardRef, ReactNode, useContext, useEffect, useRef } from "react"
+import React, { forwardRef, ReactElement, useContext, useEffect, useRef } from "react"
 import { twMerge } from "tailwind-merge"
 import { IOptions } from "../Options"
 import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
 
 export interface IDatePickerProps {
-	children?: ReactNode
+	children?: ReactElement
 	options?: IOptions
 	onChange?: (date: Date) => void
 	show: boolean
@@ -21,7 +21,7 @@ const DatePicker = ({ children, options, onChange, classNames, show, setShow }: 
 	</div>
 )
 
-const DatePickerMain = ({ children }: { children: ReactNode }) => {
+const DatePickerMain = ({ children }: { children?: ReactElement }) => {
 	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
 	const DatePickerRef = useRef<HTMLDivElement>(null)
@@ -44,7 +44,7 @@ const DatePickerMain = ({ children }: { children: ReactNode }) => {
 	return (
 		<>
 			{children ? (
-				{ children }
+				{ ...children }
 			) : (
 				<div className="relative">
 					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -64,6 +64,7 @@ const Input = forwardRef<HTMLInputElement>((_props, ref) => {
 		<input
 			ref={ref}
 			type="text"
+			name="date"
 			id="date"
 			className={twMerge(
 				"pl-9 pr-2.5 py-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
