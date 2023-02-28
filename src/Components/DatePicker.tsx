@@ -10,12 +10,13 @@ export interface IDatePickerProps {
 	onChange?: (date: Date) => void
 	show: boolean
 	setShow: (show: boolean) => void
-	classNames?: string
+	classNames?: string,
+	selectedDateState?: [Date, (date: Date) => void]
 }
 
-const DatePicker = ({ children, options, onChange, classNames, show, setShow }: IDatePickerProps) => (
+const DatePicker = ({ children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
-		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow}>
+		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState}>
 			<DatePickerMain>{children}</DatePickerMain>
 		</DatePickerProvider>
 	</div>
