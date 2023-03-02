@@ -72,7 +72,7 @@ const Input = forwardRef<HTMLInputElement>((_props, ref) => {
 				options?.theme?.input
 			)}
 			placeholder="Select Date"
-			value={selectedDate.getTime() > 0 && showSelectedDate ? getFormattedDate(selectedDate) : ""}
+			value={showSelectedDate ? getFormattedDate(selectedDate) : ""}
 			onFocus={() => setShow(true)}
 			readOnly
 		/>
