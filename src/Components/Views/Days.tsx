@@ -8,12 +8,11 @@ interface IDaysProps {
 }
 
 const Days = ({ start }: IDaysProps) => {
-	const weekDays: string[] = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 	const { selectedDate, changeSelectedDate, showSelectedDate, getFormattedDate, options } = useContext(DatePickerContext)
 	return (
 		<>
 			<div className="grid grid-cols-7 mb-1">
-				{weekDays.map((day, index) => (
+				{options.weekDays?.map((day, index) => (
 					<span key={index} className="h-6 text-sm font-medium leading-6 text-center text-gray-500 dow dark:text-gray-400">
 						{day}
 					</span>
