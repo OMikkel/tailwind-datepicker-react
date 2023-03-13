@@ -137,7 +137,7 @@ const DemoComponent = () => {
 
 	return (
 		<div>
-			<Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose} />
+			<Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose}>
                 <div className="...">
 					<div className="...">
 						<CalendarIcon />
@@ -151,7 +151,7 @@ const DemoComponent = () => {
                         readOnly
                     />
 				</div>
-            </DatePicker>
+            </Datepicker>
 		</div>
 	)
 }
