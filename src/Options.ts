@@ -29,6 +29,7 @@ export interface IOptions {
 	datepickerClassNames?: string
 	defaultDate?: Date
 	language?: string
+	disabledDates?: Date[]
 }
 
 const options: IOptions = {
