@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react"
+import React, { createContext, Dispatch, ReactElement, SetStateAction, useState } from "react"
 import { IOptions } from "../Options"
 import defaultOptions from "../Options"
 import { getFormattedDate as formatDate } from "../Utils/date"
@@ -36,18 +36,18 @@ export const DatePickerContext = createContext<IDatePickerContext>({
 })
 
 interface IDatePickerProviderProps {
-	children: ReactNode
+	children: ReactElement
 	options?: IOptions
 	onChange?: (date: Date) => void
 	show: boolean
-	setShow: (show: boolean) => void
+	setShow: (show: boolean) => void,
+	selectedDateState?: [Date, (date: Date) => void]
 }
 
-const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow }: IDatePickerProviderProps) => {
+const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow, selectedDateState }: IDatePickerProviderProps) => {
 	const options = { ...defaultOptions, ...customOptions }
 	const [view, setView] = useState<Views>("days")
-	const [selectedDate, setSelectedDate] = useState<Date 
- null>(options?.defaultDate ?? null)
+	const [selectedDate, setSelectedDate] = selectedDateState || useState<Date || null>(options?.defaultDate ?? null)
 	const [showSelectedDate, setShowSelectedDate] = useState<boolean>(true)
 	const selectedMonth = selectedDate.getMonth()
 	const selectedYear = selectedDate.getFullYear()
