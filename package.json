@@ -1,6 +1,6 @@
 {
 	"name": "tailwind-datepicker-react",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"description": "A tailwindcss/flowbite datepicker component built as a react component with types",
 	"main": "dist/index.js",
 	"types": "types/index.d.ts",
@@ -17,7 +17,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/OMikkel/tailwind-datepicker-react.git"
+		"url": "git+https://github.com/karomahlailatul/tailwind-datepicker-react.git"
 	},
 	"keywords": [
 		"tailwind",
@@ -29,12 +29,12 @@
 		"dateinput",
 		"date"
 	],
-	"author": "OMikkel",
+	"author": "OMikkel forked for fixed version by karomahlailatul",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/OMikkel/tailwind-datepicker-react/issues"
+		"url": "https://github.com/karomahlailatul/tailwind-datepicker-react/issues"
 	},
-	"homepage": "https://github.com/OMikkel/tailwind-datepicker-react#readme",
+	"homepage": "https://github.com/karomahlailatul/tailwind-datepicker-react#readme",
 	"peerDependencies": {
 		"react": ">=17",
 		"react-dom": ">=17",
