@@ -21,7 +21,9 @@ export interface IOptions {
 	title?: string
 	autoHide?: boolean
 	todayBtn?: boolean
+	todayBtnText?: string
 	clearBtn?: boolean
+	clearBtnText?: string
 	maxDate?: Date
 	minDate?: Date
 	theme?: ITheme
@@ -29,6 +31,7 @@ export interface IOptions {
 	datepickerClassNames?: string
 	defaultDate?: Date
 	language?: string
+	weekDays?: string[]
 	disabledDates?: Date[]
 }
 
@@ -36,6 +39,8 @@ const options: IOptions = {
 	autoHide: true,
 	todayBtn: true,
 	clearBtn: true,
+	todayBtnText: "Today",
+	clearBtnText: "Clear",
 	theme: {
 		background: "",
 		todayBtn: "",
@@ -50,6 +55,7 @@ const options: IOptions = {
 	datepickerClassNames: "",
 	defaultDate: new Date(),
 	language: "en",
+	weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 }
 
 export default options

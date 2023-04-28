@@ -16,7 +16,7 @@ const Months = () => {
 							showSelectedDate && selectedDate.getTime() > 0 && getFormattedDate(selectedDate, { month: "short" }) === month
 								? twMerge("bg-blue-700 text-white hover:bg-blue-600", options?.theme?.selected)
 								: ""
-						}`}
+						} ${twMerge(options?.theme?.text)}`}
 						onClick={() => {
 							changeSelectedDate("date", new Date(addMonths(selectedDate, index - selectedDate.getMonth())))
 							setView("days")

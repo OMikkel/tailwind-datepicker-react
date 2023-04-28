@@ -92,7 +92,7 @@ export const ButtonToday = () => {
 				setView("days")
 			}}
 		>
-			Today
+			{options?.todayBtnText}
 		</button>
 	)
 }
@@ -108,7 +108,7 @@ export const ButtonClear = () => {
 			)}
 			onClick={() => setShowSelectedDate(false)}
 		>
-			Clear
+			{options?.clearBtnText}
 		</button>
 	)
 }
