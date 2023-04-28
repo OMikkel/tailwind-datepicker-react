@@ -32,6 +32,7 @@ export interface IOptions {
 	defaultDate?: Date
 	language?: string
 	weekDays?: string[]
+	disabledDates?: Date[]
 }
 
 const options: IOptions = {

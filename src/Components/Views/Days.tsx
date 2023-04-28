@@ -35,8 +35,8 @@ const Days = ({ start }: IDaysProps) => {
 								month == getFormattedDate(selectedDate, { month: "long" }) && year == getFormattedDate(selectedDate, { year: "numeric" })
 									? twMerge("text-gray-900", options?.theme?.text)
 									: twMerge("text-gray-500", options?.theme?.disabledText)
-							} ${options?.minDate && new Date(current) < options?.minDate ? twMerge("text-gray-500", options?.theme?.disabledText) : ""} ${
-								options?.maxDate && new Date(current) > options?.maxDate ? twMerge("text-gray-500", options?.theme?.disabledText) : ""
+							} ${(options?.minDate && new Date(current) < options?.minDate) || (options?.disabledDates && options.disabledDates.indexOf(new Date(current)) >= 0) ? twMerge("text-gray-500", options?.theme?.disabledText) : ""} ${
+								(options?.maxDate && new Date(current) > options?.maxDate) || (options?.disabledDates && options.disabledDates.indexOf(new Date(current)) >= 0) ? twMerge("text-gray-500", options?.theme?.disabledText) : ""
 							}
                             `}
 							onClick={() => {

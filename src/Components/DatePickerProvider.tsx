@@ -55,6 +55,7 @@ const DatePickerProvider = ({ children, options: customOptions, onChange, show, 
 	const changeSelectedDate = (action: "prev" | "next" | "date" | "today", date: Date) => {
 		if (options?.maxDate && date > options.maxDate) return
 		if (options?.minDate && date < options.minDate) return
+		if (options?.disabledDates && options.disabledDates.indexOf(date) >= 0) return
 		setSelectedDate(date)
 		setShowSelectedDate(true)
 		if (options?.autoHide && view === "days" && action === "date") setShow(false)

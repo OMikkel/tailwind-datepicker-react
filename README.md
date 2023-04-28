@@ -78,7 +78,7 @@ const options = {
 }
 
 const DemoComponent = () => {
-	const [show, setShow] = useState <boolean>(false)
+	const [show, setShow] = useState < boolean > false
 	const handleChange = (selectedDate: Date) => {
 		console.log(selectedDate)
 	}
@@ -179,6 +179,7 @@ const DemoComponent = () => {
 - datepickerClassNames?: string - Default: `""`
 - defaultDate?: Date - Default: `new Date()`
 - language?: string - Default: `en`
+- disabledDates?: Date[] - Default: `[]`
 
 ### ITheme
 
@@ -200,4 +201,3 @@ const DemoComponent = () => {
 ### License
 
 This project is open-source under the [MIT License](https://github.com/OMikkel/tailwind-datepicker-react/blob/master/LICENSE.md).
-
