@@ -1,6 +1,7 @@
 import React, { forwardRef, ReactElement, useContext, useEffect, useRef, ReactNode } from "react"
 import { twMerge } from "tailwind-merge"
 import { IOptions } from "../Options"
+import defaultOptions from "../Options"
 import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
 
@@ -10,19 +11,20 @@ export interface IDatePickerProps {
 	onChange?: (date: Date) => void
 	show: boolean
 	setShow: (show: boolean) => void
-	classNames?: string,
+	classNames?: string
 	selectedDateState?: [Date, (date: Date) => void]
 }
 
 const DatePicker = ({ children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
 		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState}>
-			<DatePickerMain>{children}</DatePickerMain>
+			<DatePickerMain options={options}>{children}</DatePickerMain>
 		</DatePickerProvider>
 	</div>
 )
 
-const DatePickerMain = ({ children }: { children?: ReactElement }) => {
+const DatePickerMain = ({ options: customOptions, children }: { options?: IOptions; children?: ReactElement }) => {
+	const options = { ...defaultOptions, ...customOptions }
 	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
 	const DatePickerRef = useRef<HTMLDivElement>(null)
@@ -51,7 +53,7 @@ const DatePickerMain = ({ children }: { children?: ReactElement }) => {
 					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 						<CalendarIcon />
 					</div>
-					<Input ref={InputRef} />
+					<Input ref={InputRef} nameProp={options?.inputNameProp} />
 				</div>
 			)}
 			{show && <DatePickerPopup ref={DatePickerRef} />}
@@ -59,13 +61,13 @@ const DatePickerMain = ({ children }: { children?: ReactElement }) => {
 	)
 }
 
-const Input = forwardRef<HTMLInputElement>((_props, ref) => {
+const Input = forwardRef<HTMLInputElement, { nameProp?: string }>((props, ref) => {
 	const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext)
 	return (
 		<input
 			ref={ref}
 			type="text"
-			name="date"
+			name={props.nameProp || "date"}
 			id="date"
 			className={twMerge(
 				"pl-9 pr-2.5 py-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",

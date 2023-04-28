@@ -177,6 +177,7 @@ const DemoComponent = () => {
 - language?: string - Default: `en`
 - disabledDates?: Date[] - Default: `[]`
 - weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]`
+- inputNameProp?: string - Default: `date`
 
 ### ITheme
 
