@@ -179,6 +179,7 @@ const DemoComponent = () => {
 - weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]`
 - inputNameProp?: string - Default: `date`
 - inputIdProp?: string - Default: `Same as "inputNameProp"`
+- inputPlaceholderProp?: string - Default: `Select Date`
 
 ### ITheme
 
