@@ -29,7 +29,7 @@ export interface IOptions {
 	theme?: ITheme
 	icons?: IIcons
 	datepickerClassNames?: string
-	defaultDate?: Date
+	defaultDate?: Date | null
 	language?: string
 	weekDays?: string[]
 	disabledDates?: Date[]
