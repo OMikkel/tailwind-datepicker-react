@@ -1,0 +1,10 @@
+{
+    "verbose": true,
+    "ext": "ts,tsx",
+    "watch": [
+        "src/**/*"
+    ],
+    "execMap": {
+        "js": "yarn run build:cjs"
+    }
+  }

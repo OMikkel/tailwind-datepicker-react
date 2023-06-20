@@ -199,3 +199,10 @@ const DemoComponent = () => {
 ### License
 
 This project is open-source under the [MIT License](https://github.com/OMikkel/tailwind-datepicker-react/blob/master/LICENSE.md).
+
+## Contributing
+
+After clone, you can run (separated):
+
+* `yarn run dev` to start building with [Nodemon](https://github.com/remy/nodemon).
+* `cd demo-app/ && npm run dev` to start [Demo App](http://localhost:3000/).
