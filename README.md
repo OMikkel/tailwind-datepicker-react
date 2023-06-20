@@ -180,6 +180,7 @@ const DemoComponent = () => {
 - inputNameProp?: string - Default: `date`
 - inputIdProp?: string - Default: `Same as "inputNameProp"`
 - inputPlaceholderProp?: string - Default: `Select Date`
+- inputDateFormatProp?: [Intl.DateTimeFormatOptions](https://devhints.io/wip/intl-datetime) - Default: `{day: "numeric", month: "long", year: "numeric"}`
 
 ### ITheme
 

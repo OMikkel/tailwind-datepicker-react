@@ -53,7 +53,13 @@ const DatePickerMain = ({ options: customOptions, children }: { options?: IOptio
 					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 						<CalendarIcon />
 					</div>
-					<Input ref={InputRef} idProp={options?.inputIdProp} nameProp={options?.inputNameProp} placeholderProp={options?.inputPlaceholderProp} />
+					<Input
+						ref={InputRef}
+						idProp={options?.inputIdProp}
+						nameProp={options?.inputNameProp}
+						placeholderProp={options?.inputPlaceholderProp}
+						dateFormat={options?.inputDateFormatProp}
+					/>
 				</div>
 			)}
 			{show && <DatePickerPopup ref={DatePickerRef} />}
@@ -61,12 +67,14 @@ const DatePickerMain = ({ options: customOptions, children }: { options?: IOptio
 	)
 }
 
-const Input = forwardRef<HTMLInputElement, { idProp ?: string, nameProp?: string, placeholderProp ?: string }>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, { idProp ?: string, nameProp?: string, placeholderProp ?: string, dateFormat?: Intl.DateTimeFormatOptions }>((props, ref) => {
 	const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext)
 	
 	const nameProp = props.nameProp || "date";
 	const idProp = props.idProp || nameProp;
 	const placeholderProp = props.placeholderProp || "Select Date";
+
+	const format = props.dateFormat || null;
 	
 	return (
 		<input
@@ -79,7 +87,7 @@ const Input = forwardRef<HTMLInputElement, { idProp ?: string, nameProp?: string
 				options?.theme?.input
 			)}
 			placeholder={placeholderProp}
-			value={selectedDate && showSelectedDate ? getFormattedDate(selectedDate) : ""}
+			value={selectedDate && showSelectedDate ? getFormattedDate(selectedDate, format) : ""}
 			onFocus={() => setShow(true)}
 			readOnly
 		/>

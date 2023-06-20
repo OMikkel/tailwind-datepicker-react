@@ -9,6 +9,11 @@ const Home: NextPage = () => {
 		autoHide: true,
 		todayBtn: true,
 		clearBtn: true,
+		inputDateFormatProp: {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric"
+		},
 		theme: {
 			background: "",
 			todayBtn: "",

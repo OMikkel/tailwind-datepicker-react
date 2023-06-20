@@ -36,6 +36,7 @@ export interface IOptions {
 	inputNameProp?: string
 	inputIdProp?: string
 	inputPlaceholderProp?: string
+	inputDateFormatProp?: Intl.DateTimeFormatOptions
 }
 
 const options: IOptions = {
@@ -62,6 +63,11 @@ const options: IOptions = {
 	inputNameProp: "date",
 	inputIdProp: "date",
 	inputPlaceholderProp: "Select Date",
+	inputDateFormatProp: {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	}
 }
 
 export default options
