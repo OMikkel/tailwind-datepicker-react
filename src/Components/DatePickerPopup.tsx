@@ -10,10 +10,14 @@ import Years from "./Views/Years"
 
 const DatePickerPopup = forwardRef<HTMLDivElement>((_props, ref: ForwardedRef<HTMLDivElement>) => {
 	const { selectedMonth, selectedYear, view, options } = useContext(DatePickerContext)
-
+	
+	const language = options?.language ? options?.language : "en";
+	const locale = new Intl.Locale(language);
+	
+	const weekStart = (locale?.weekInfo?.firstDay || 1);
 	const firstOfMonth = firstDateOfMonth(selectedYear, selectedMonth, 1)
-	const start = dayOfTheWeekOf(firstOfMonth, 1, 1)
-
+	const start = dayOfTheWeekOf(firstOfMonth, weekStart, weekStart);
+	
 	return (
 		<div ref={ref} className={twMerge("absolute z-50 block pt-2 top-10", options?.datepickerClassNames)}>
 			<div className={twMerge("inline-block p-4 bg-white rounded-lg shadow-lg dark:bg-gray-700", options?.theme?.background)}>

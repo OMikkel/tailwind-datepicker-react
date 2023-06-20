@@ -176,7 +176,7 @@ const DemoComponent = () => {
 - defaultDate?: false|Date - Default: `new Date()`
 - language?: string - Default: `en`
 - disabledDates?: Date[] - Default: `[]`
-- weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]`
+- weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"] - Start at Monday even with another language`
 - inputNameProp?: string - Default: `date`
 - inputIdProp?: string - Default: `Same as "inputNameProp"`
 - inputPlaceholderProp?: string - Default: `Select Date`
