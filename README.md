@@ -173,7 +173,7 @@ const DemoComponent = () => {
 - theme?: [ITheme](###ITheme) - Default: `As seen on demo page`
 - icons?: [IIcons](###IIcons) - Default: `As seen on demo page`
 - datepickerClassNames?: string - Default: `""`
-- defaultDate?: Date - Default: `new Date()`
+- defaultDate?: false|Date - Default: `new Date()`
 - language?: string - Default: `en`
 - disabledDates?: Date[] - Default: `[]`
 - weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]`
