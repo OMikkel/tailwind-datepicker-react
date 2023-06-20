@@ -34,6 +34,7 @@ export interface IOptions {
 	weekDays?: string[]
 	disabledDates?: Date[]
 	inputNameProp?: string
+	inputIdProp?: string
 }
 
 const options: IOptions = {
@@ -58,6 +59,7 @@ const options: IOptions = {
 	language: "en",
 	weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 	inputNameProp: "date",
+	inputIdProp: "date",
 }
 
 export default options
