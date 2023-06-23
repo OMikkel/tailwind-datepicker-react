@@ -15,7 +15,7 @@ interface IDatePickerContext {
 	setShowSelectedDate: Dispatch<SetStateAction<boolean>>
 	selectedMonth: number
 	selectedYear: number
-	getFormattedDate: (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions) => string
+	getFormattedDate: (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions | null | undefined) => string
 }
 
 export type Views = "days" | "months" | "years" | "decades"
@@ -63,7 +63,7 @@ const DatePickerProvider = ({ children, options: customOptions, onChange, show, 
 		if (onChange) onChange(date)
 	}
 
-	const getFormattedDate = (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions) => formatDate(options?.language ? options?.language : "en", date, formatOptions)
+	const getFormattedDate = (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions | undefined | null) => formatDate(options?.language ? options?.language : "en", date, formatOptions)
 
 	return (
 		<DatePickerContext.Provider
