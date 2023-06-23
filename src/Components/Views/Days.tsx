@@ -9,10 +9,15 @@ interface IDaysProps {
 
 const Days = ({ start }: IDaysProps) => {
 	const { selectedDate, changeSelectedDate, showSelectedDate, getFormattedDate, options } = useContext(DatePickerContext)
+	
+	const startOfWeek = (new Date(start).getDay() + 6) % 7;
+	const weekDays = options.weekDays || [];
+	const sortedWeekDays = weekDays.slice(startOfWeek).concat(weekDays.slice(0, startOfWeek));
+
 	return (
 		<>
 			<div className="grid grid-cols-7 mb-1">
-				{options.weekDays?.map((day, index) => (
+				{sortedWeekDays.map((day, index) => (
 					<span key={index} className="h-6 text-sm font-medium leading-6 text-center text-gray-500 dow dark:text-gray-400">
 						{day}
 					</span>

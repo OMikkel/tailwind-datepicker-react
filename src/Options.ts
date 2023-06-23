@@ -29,11 +29,14 @@ export interface IOptions {
 	theme?: ITheme
 	icons?: IIcons
 	datepickerClassNames?: string
-	defaultDate?: Date
+	defaultDate?: Date | null
 	language?: string
 	weekDays?: string[]
 	disabledDates?: Date[]
 	inputNameProp?: string
+	inputIdProp?: string
+	inputPlaceholderProp?: string
+	inputDateFormatProp?: Intl.DateTimeFormatOptions
 }
 
 const options: IOptions = {
@@ -58,6 +61,13 @@ const options: IOptions = {
 	language: "en",
 	weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 	inputNameProp: "date",
+	inputIdProp: "date",
+	inputPlaceholderProp: "Select Date",
+	inputDateFormatProp: {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	}
 }
 
 export default options

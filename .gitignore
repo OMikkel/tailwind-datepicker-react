@@ -5,3 +5,5 @@ types
 dist
 test
 .publishprocess
+.vscode
+*.log

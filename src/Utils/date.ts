@@ -45,6 +45,7 @@ export const getFormattedDate = (language: string, date: Date | number, options?
 		month: "long",
 		year: "numeric",
 	}
+	
 	if (options) defaultOptions = options
 
 	return new Intl.DateTimeFormat(language, defaultOptions).format(date)

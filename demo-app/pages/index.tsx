@@ -1,13 +1,19 @@
 import type { NextPage } from "next"
 import { useState } from "react"
-import DatePicker from "tailwind-datepicker-react"
+import DatePicker from "../../dist/index.js"
 import ThemeSelector from "../components/ThemeSelector"
+
 const Home: NextPage = () => {
 	const [show, setShow] = useState<boolean>(false)
 	const options = {
 		autoHide: true,
 		todayBtn: true,
 		clearBtn: true,
+		inputDateFormatProp: {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric"
+		},
 		theme: {
 			background: "",
 			todayBtn: "",

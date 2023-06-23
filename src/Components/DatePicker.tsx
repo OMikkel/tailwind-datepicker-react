@@ -53,7 +53,13 @@ const DatePickerMain = ({ options: customOptions, children }: { options?: IOptio
 					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 						<CalendarIcon />
 					</div>
-					<Input ref={InputRef} nameProp={options?.inputNameProp} />
+					<Input
+						ref={InputRef}
+						idProp={options?.inputIdProp}
+						nameProp={options?.inputNameProp}
+						placeholderProp={options?.inputPlaceholderProp}
+						dateFormat={options?.inputDateFormatProp}
+					/>
 				</div>
 			)}
 			{show && <DatePickerPopup ref={DatePickerRef} />}
@@ -61,20 +67,27 @@ const DatePickerMain = ({ options: customOptions, children }: { options?: IOptio
 	)
 }
 
-const Input = forwardRef<HTMLInputElement, { nameProp?: string }>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, { idProp ?: string, nameProp?: string, placeholderProp ?: string, dateFormat?: Intl.DateTimeFormatOptions }>((props, ref) => {
 	const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext)
+	
+	const nameProp = props.nameProp || "date";
+	const idProp = props.idProp || nameProp;
+	const placeholderProp = props.placeholderProp || "Select Date";
+
+	const format = props.dateFormat || null;
+	
 	return (
 		<input
 			ref={ref}
 			type="text"
-			name={props.nameProp || "date"}
-			id="date"
+			name={nameProp}
+			id={idProp}
 			className={twMerge(
 				"pl-9 pr-2.5 py-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
 				options?.theme?.input
 			)}
-			placeholder="Select Date"
-			value={selectedDate && showSelectedDate ? getFormattedDate(selectedDate) : ""}
+			placeholder={placeholderProp}
+			value={selectedDate && showSelectedDate ? getFormattedDate(selectedDate, format) : ""}
 			onFocus={() => setShow(true)}
 			readOnly
 		/>

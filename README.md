@@ -173,11 +173,14 @@ const DemoComponent = () => {
 - theme?: [ITheme](###ITheme) - Default: `As seen on demo page`
 - icons?: [IIcons](###IIcons) - Default: `As seen on demo page`
 - datepickerClassNames?: string - Default: `""`
-- defaultDate?: Date - Default: `new Date()`
+- defaultDate?: false|Date - Default: `new Date()`
 - language?: string - Default: `en`
 - disabledDates?: Date[] - Default: `[]`
-- weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]`
+- weekDays?: string[] - Default: `["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"] - Start at Monday even with another language`
 - inputNameProp?: string - Default: `date`
+- inputIdProp?: string - Default: `Same as "inputNameProp"`
+- inputPlaceholderProp?: string - Default: `Select Date`
+- inputDateFormatProp?: [Intl.DateTimeFormatOptions](https://devhints.io/wip/intl-datetime) - Default: `{day: "numeric", month: "long", year: "numeric"}`
 
 ### ITheme
 
@@ -199,3 +202,10 @@ const DemoComponent = () => {
 ### License
 
 This project is open-source under the [MIT License](https://github.com/OMikkel/tailwind-datepicker-react/blob/master/LICENSE.md).
+
+## Contributing
+
+After clone, you can run (separated):
+
+* `yarn run dev` to start building with [Nodemon](https://github.com/remy/nodemon).
+* `cd demo-app/ && npm run dev` to start [Demo App](http://localhost:3000/).
