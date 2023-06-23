@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 import { useState } from "react"
-import DatePicker from "../../dist/index.js"
+import DatePicker from "tailwind-datepicker-react"
 import ThemeSelector from "../components/ThemeSelector"
 
 const Home: NextPage = () => {

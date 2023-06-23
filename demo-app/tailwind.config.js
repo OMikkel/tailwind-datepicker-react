@@ -6,7 +6,7 @@ module.exports = {
     content: [
         "./components/**/*.tsx",
         "./pages/**/*.{ts,tsx}",
-        "../dist/**/*.js", // <--- Add this line
+        "./node_modules/tailwind-datepicker-react/dist/**/*.js", // <--- Add this line
     ],
     plugins: [],
     theme: {},
