@@ -12,6 +12,7 @@ const DatePickerPopup = forwardRef<HTMLDivElement>((_props, ref: ForwardedRef<HT
 	const { selectedMonth, selectedYear, view, options } = useContext(DatePickerContext)
 	
 	const language = options?.language ? options?.language : "en";
+    // @ts-ignore
 	const locale = new Intl.Locale(language);
 	
 	const weekStart = (locale?.weekInfo?.firstDay || 1);
