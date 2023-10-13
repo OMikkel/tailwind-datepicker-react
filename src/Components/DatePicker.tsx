@@ -6,7 +6,7 @@ import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
 
 export interface IDatePickerProps {
-	value?: Date,
+	value?: Date
 	children?: ReactElement | ReactNode
 	options?: IOptions
 	onChange?: (date: Date) => void
@@ -19,12 +19,14 @@ export interface IDatePickerProps {
 const DatePicker = ({ value, children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
 		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState}>
-			<DatePickerMain value={value} options={options}>{children}</DatePickerMain>
+			<DatePickerMain value={value} options={options}>
+				{children}
+			</DatePickerMain>
 		</DatePickerProvider>
 	</div>
 )
 
-const DatePickerMain = ({ value, options: customOptions, children }: { value?: Date, options?: IOptions; children?: ReactElement }) => {
+const DatePickerMain = ({ value, options: customOptions, children }: { value?: Date; options?: IOptions; children?: ReactElement }) => {
 	const options = { ...defaultOptions, ...customOptions }
 	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
@@ -57,6 +59,7 @@ const DatePickerMain = ({ value, options: customOptions, children }: { value?: D
 					<Input
 						ref={InputRef}
 						idProp={options?.inputIdProp}
+						valueProp={value}
 						nameProp={options?.inputNameProp}
 						placeholderProp={options?.inputPlaceholderProp}
 						dateFormat={options?.inputDateFormatProp}
@@ -68,16 +71,16 @@ const DatePickerMain = ({ value, options: customOptions, children }: { value?: D
 	)
 }
 
-const Input = forwardRef<HTMLInputElement, { idProp ?: string, valueProp?: Date, nameProp?: string, placeholderProp ?: string, dateFormat?: Intl.DateTimeFormatOptions }>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, { idProp?: string; valueProp?: Date; nameProp?: string; placeholderProp?: string; dateFormat?: Intl.DateTimeFormatOptions }>((props, ref) => {
 	const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext)
-	
-	const nameProp = props.nameProp || "date";
-	const idProp = props.idProp || nameProp;
-	const placeholderProp = props.placeholderProp || "Select Date";
-	const valueProp = props.valueProp;
 
-	const format = props.dateFormat || null;
-	
+	const nameProp = props.nameProp || "date"
+	const idProp = props.idProp || nameProp
+	const placeholderProp = props.placeholderProp || "Select Date"
+	const valueProp = props.valueProp
+
+	const format = props.dateFormat || null
+
 	return (
 		<input
 			ref={ref}
@@ -89,7 +92,7 @@ const Input = forwardRef<HTMLInputElement, { idProp ?: string, valueProp?: Date,
 				options?.theme?.input
 			)}
 			placeholder={placeholderProp}
-			value={value ? getFormattedDate(valueProp, format) : selectedDate && showSelectedDate ? getFormattedDate(selectedDate, format) : ""}
+			value={valueProp ? getFormattedDate(valueProp, format) : selectedDate && showSelectedDate ? getFormattedDate(selectedDate, format) : ""}
 			onFocus={() => setShow(true)}
 			readOnly
 		/>
