@@ -54,7 +54,7 @@ const options = {
 	autoHide: true,
 	todayBtn: false,
 	clearBtn: true,
-	clearBtnText: "Clear"
+	clearBtnText: "Clear",
 	maxDate: new Date("2030-01-01"),
 	minDate: new Date("1950-01-01"),
 	theme: {
@@ -113,7 +113,7 @@ const options = {
 	autoHide: true,
 	todayBtn: false,
 	clearBtn: true,
-	clearBtnText: "Clear"
+	clearBtnText: "Clear",
 	maxDate: new Date("2030-01-01"),
 	minDate: new Date("1950-01-01"),
 	theme: {
