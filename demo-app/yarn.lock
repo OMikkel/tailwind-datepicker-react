@@ -2043,10 +2043,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tailwind-datepicker-react@^1.2.1:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/tailwind-datepicker-react/-/tailwind-datepicker-react-1.3.0.tgz#b73663880a181b0fbe85a872bda0490b60464f6b"
-  integrity sha512-5zYoTljWW19Z7uqBYuAboToWdFMhxE4ploQp1I2DBWgJVwH1ximWTvzuNzckdE72fNRF/+dlQEFEYBUOjO/xqQ==
+tailwind-datepicker-react@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/tailwind-datepicker-react/-/tailwind-datepicker-react-1.4.3.tgz#137e8d0a3a0d48a38ce666df6d2365acf37bbb00"
+  integrity sha512-K/mX7GjsO8fvaN1/jZcEbCMb14VdBe0HGxBy36WK4zxfYOPB2tGMSAUo06so+BmsaVPU4dwmfDElK/6Uxaashw==
   dependencies:
     tailwind-merge "^1.6.1"
 
