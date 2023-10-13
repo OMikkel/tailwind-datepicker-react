@@ -154,6 +154,7 @@ const DemoComponent = () => {
 ### DatePicker Props
 
 - children?: ReactElement
+- value?: Date
 - options?: [IOptions](###IOptions)
 - onChange?: (date: Date) => void
 - show: boolean

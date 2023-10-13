@@ -6,6 +6,7 @@ import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
 
 export interface IDatePickerProps {
+	value?: Date,
 	children?: ReactElement | ReactNode
 	options?: IOptions
 	onChange?: (date: Date) => void
@@ -15,15 +16,15 @@ export interface IDatePickerProps {
 	selectedDateState?: [Date, (date: Date) => void]
 }
 
-const DatePicker = ({ children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
+const DatePicker = ({ value, children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
 		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState}>
-			<DatePickerMain options={options}>{children}</DatePickerMain>
+			<DatePickerMain value={value} options={options}>{children}</DatePickerMain>
 		</DatePickerProvider>
 	</div>
 )
 
-const DatePickerMain = ({ options: customOptions, children }: { options?: IOptions; children?: ReactElement }) => {
+const DatePickerMain = ({ value, options: customOptions, children }: { value?: Date, options?: IOptions; children?: ReactElement }) => {
 	const options = { ...defaultOptions, ...customOptions }
 	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
@@ -67,12 +68,13 @@ const DatePickerMain = ({ options: customOptions, children }: { options?: IOptio
 	)
 }
 
-const Input = forwardRef<HTMLInputElement, { idProp ?: string, nameProp?: string, placeholderProp ?: string, dateFormat?: Intl.DateTimeFormatOptions }>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, { idProp ?: string, valueProp?: Date, nameProp?: string, placeholderProp ?: string, dateFormat?: Intl.DateTimeFormatOptions }>((props, ref) => {
 	const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext)
 	
 	const nameProp = props.nameProp || "date";
 	const idProp = props.idProp || nameProp;
 	const placeholderProp = props.placeholderProp || "Select Date";
+	const valueProp = props.valueProp;
 
 	const format = props.dateFormat || null;
 	
@@ -87,7 +89,7 @@ const Input = forwardRef<HTMLInputElement, { idProp ?: string, nameProp?: string
 				options?.theme?.input
 			)}
 			placeholder={placeholderProp}
-			value={selectedDate && showSelectedDate ? getFormattedDate(selectedDate, format) : ""}
+			value={value ? getFormattedDate(valueProp, format) : selectedDate && showSelectedDate ? getFormattedDate(selectedDate, format) : ""}
 			onFocus={() => setShow(true)}
 			readOnly
 		/>
