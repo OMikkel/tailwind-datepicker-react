@@ -98,7 +98,7 @@ export const ButtonToday = () => {
 }
 
 export const ButtonClear = () => {
-	const { setShowSelectedDate, options } = useContext(DatePickerContext)
+	const { setShowSelectedDate, onClear, options } = useContext(DatePickerContext)
 	return (
 		<button
 			type="button"
@@ -106,7 +106,10 @@ export const ButtonClear = () => {
 				"w-full px-5 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg dark:text-white dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 focus:ring-4 focus:ring-blue-300",
 				options?.theme?.clearBtn
 			)}
-			onClick={() => setShowSelectedDate(false)}
+			onClick={() => {
+				setShowSelectedDate(false);
+				if (onClear) onClear()
+			}}
 		>
 			{options?.clearBtnText}
 		</button>
