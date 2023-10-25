@@ -10,15 +10,16 @@ export interface IDatePickerProps {
 	children?: ReactElement | ReactNode
 	options?: IOptions
 	onChange?: (date: Date) => void
+	onClear?: () => void
 	show: boolean
 	setShow: (show: boolean) => void
 	classNames?: string
 	selectedDateState?: [Date, (date: Date) => void]
 }
 
-const DatePicker = ({ value, children, options, onChange, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
+const DatePicker = ({ value, children, options, onChange, onClear, classNames, show, setShow, selectedDateState }: IDatePickerProps) => (
 	<div className={twMerge("w-full", classNames)}>
-		<DatePickerProvider options={options} onChange={onChange} show={show} setShow={setShow} selectedDateState={selectedDateState}>
+		<DatePickerProvider options={options} onChange={onChange} onClear={onClear} show={show} setShow={setShow} selectedDateState={selectedDateState}>
 			<DatePickerMain value={value} options={options}>
 				{children}
 			</DatePickerMain>

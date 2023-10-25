@@ -1,6 +1,7 @@
 import type { NextPage } from "next"
 import { useState } from "react"
 import DatePicker from "tailwind-datepicker-react"
+// import DatePicker from "../../dist/Components/DatePicker"
 import ThemeSelector from "../components/ThemeSelector"
 import { IOptions } from "tailwind-datepicker-react/types/Options"
 
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
 			selected: "",
 		},
 	}
+
 	return (
 		<div className="flex flex-col items-center w-full h-full gap-5 mt-20">
 			<ThemeSelector />

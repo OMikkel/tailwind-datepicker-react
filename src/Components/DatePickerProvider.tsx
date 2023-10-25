@@ -15,6 +15,7 @@ interface IDatePickerContext {
 	setShowSelectedDate: Dispatch<SetStateAction<boolean>>
 	selectedMonth: number
 	selectedYear: number
+	onClear: () => void
 	getFormattedDate: (date: Date | number, formatOptions?: Intl.DateTimeFormatOptions | null | undefined) => string
 }
 
@@ -32,6 +33,7 @@ export const DatePickerContext = createContext<IDatePickerContext>({
 	setShowSelectedDate: () => {},
 	selectedMonth: 0,
 	selectedYear: 0,
+	onClear: () => {},
 	getFormattedDate: () => "",
 })
 
@@ -39,13 +41,13 @@ interface IDatePickerProviderProps {
 	children: ReactElement
 	options?: IOptions
 	onChange?: (date: Date) => void
+	onClear: () => void
 	show: boolean
 	setShow: (show: boolean) => void
 	selectedDateState?: [Date, (date: Date) => void]
 }
 
-const DatePickerProvider = ({ children, options: customOptions, onChange, show, setShow, selectedDateState }: IDatePickerProviderProps) => {
-
+const DatePickerProvider = ({ children, options: customOptions, onChange, onClear, show, setShow, selectedDateState }: IDatePickerProviderProps) => {
 	const options = { ...defaultOptions, ...customOptions }
 	const [view, setView] = useState<Views>("days")
 	const [selectedDate, setSelectedDate] = selectedDateState || useState<Date>(options?.defaultDate || new Date())
@@ -67,7 +69,7 @@ const DatePickerProvider = ({ children, options: customOptions, onChange, show, 
 
 	return (
 		<DatePickerContext.Provider
-			value={{ options, view, setView, show, setShow, selectedDate, changeSelectedDate, showSelectedDate, setShowSelectedDate, selectedMonth, selectedYear, getFormattedDate }}
+			value={{ options, view, setView, show, setShow, selectedDate, changeSelectedDate, showSelectedDate, setShowSelectedDate, selectedMonth, selectedYear, onClear, getFormattedDate }}
 		>
 			{children}
 		</DatePickerContext.Provider>
