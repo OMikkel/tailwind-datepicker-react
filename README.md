@@ -93,13 +93,16 @@ const DemoComponent = () => {
 	const handleChange = (selectedDate: Date) => {
 		console.log(selectedDate)
 	}
+	const handleClear = () => {
+		console.log('Date is cleared!')
+	}
 	const handleClose = (state: boolean) => {
 		setShow(state)
 	}
 
 	return (
 		<div>
-			<Datepicker options={options} onChange={handleChange} show={show} setShow={handleClose} />
+			<Datepicker options={options} onChange={handleChange} onClear={handleClear} show={show} setShow={handleClose} />
 		</div>
 	)
 }
@@ -179,6 +182,7 @@ const DemoComponent = () => {
 - value?: Date
 - options?: [IOptions](###IOptions)
 - onChange?: (date: Date) => void
+- onClear?: () => void
 - show: boolean
 - setShow: (show: boolean) => void
 - classNames?: string
