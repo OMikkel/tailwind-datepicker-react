@@ -45,24 +45,25 @@ export const getFormattedDate = (language: string, date: Date | number, options?
 		month: "long",
 		year: "numeric",
 	}
-	
+
 	if (options) defaultOptions = options
 
 	return new Intl.DateTimeFormat(language, defaultOptions).format(date)
 }
 
 export const goToPrevNext = (view: Views, date: Date, direction: number): number => {
+	const newDate = new Date(date.toString())
 	switch (view) {
 		case "days":
-			return addMonths(date, direction)
+			return addMonths(newDate, direction)
 		case "months":
-			return addYears(date, direction)
+			return addYears(newDate, direction)
 		case "years":
-			return addYears(date, direction * 10)
+			return addYears(newDate, direction * 10)
 		case "decades":
-			return addYears(date, direction * 100)
+			return addYears(newDate, direction * 100)
 		default:
-			return addYears(date, direction * 10)
+			return addYears(newDate, direction * 10)
 	}
 }
 
