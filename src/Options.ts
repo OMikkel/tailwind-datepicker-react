@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { ReactElement, Ref } from "react"
 
 interface ITheme {
 	background: string
@@ -37,6 +37,7 @@ export interface IOptions {
 	inputIdProp?: string
 	inputPlaceholderProp?: string
 	inputDateFormatProp?: Intl.DateTimeFormatOptions
+	inputRef?: Ref<HTMLInputElement>
 }
 
 const options: IOptions = {
