@@ -4,6 +4,7 @@ import { IOptions } from "../Options"
 import defaultOptions from "../Options"
 import DatePickerPopup from "./DatePickerPopup"
 import DatePickerProvider, { DatePickerContext } from "./DatePickerProvider"
+import { useCombinedRef } from "../hooks/useCombinedRefs"
 
 export interface IDatePickerProps {
 	value?: Date
@@ -31,6 +32,7 @@ const DatePickerMain = ({ value, options: customOptions, children }: { value?: D
 	const { setShow, show } = useContext(DatePickerContext)
 	const InputRef = useRef<HTMLInputElement>(null)
 	const DatePickerRef = useRef<HTMLDivElement>(null)
+	const combinedInputRef = useCombinedRef(options?.inputRef || null, InputRef)
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -57,7 +59,7 @@ const DatePickerMain = ({ value, options: customOptions, children }: { value?: D
 						<CalendarIcon />
 					</div>
 					<Input
-						ref={InputRef}
+						ref={combinedInputRef}
 						idProp={options?.inputIdProp}
 						valueProp={value}
 						nameProp={options?.inputNameProp}
