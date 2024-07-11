@@ -50,6 +50,6 @@
 		"typescript": "^4.8.4"
 	},
 	"dependencies": {
-		"tailwind-merge": "^1.6.1"
+    "clsx": "^2.0.0"
 	}
 }
