@@ -7,6 +7,7 @@ interface ITheme {
 	icons: string
 	text: string
 	disabledText: string
+	dateOtherMonth: string
 	input: string
 	inputIcon: string
 	selected: string

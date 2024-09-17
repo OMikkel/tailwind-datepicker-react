@@ -10,6 +10,8 @@ const Home: NextPage = () => {
 		autoHide: true,
 		todayBtn: true,
 		clearBtn: true,
+		maxDate: new Date(),
+		minDate: new Date("2024-07-30"),
 		inputDateFormatProp: {
 			day: "2-digit",
 			month: "2-digit",
@@ -21,7 +23,8 @@ const Home: NextPage = () => {
 			clearBtn: "",
 			icons: "",
 			text: "",
-			disabledText: "",
+			disabledText: "text-zinc-100 line-through cursor-not-allowed",
+			dateOtherMonth: "text-zinc-300",
 			input: "",
 			inputIcon: "",
 			selected: "",
