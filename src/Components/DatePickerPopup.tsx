@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef, useContext } from "react"
+import React, {ForwardedRef, forwardRef, useContext, useEffect, useState} from "react"
 import { twMerge } from "tailwind-merge"
 import { dayOfTheWeekOf, firstDateOfMonth } from "../Utils/date"
 import { ButtonClear, ButtonNextMonth, ButtonPrevMonth, ButtonSelectMonth, ButtonToday } from "./Buttons"
@@ -18,9 +18,36 @@ const DatePickerPopup = forwardRef<HTMLDivElement>((_props, ref: ForwardedRef<HT
 	const weekStart = (locale?.weekInfo?.firstDay || 1);
 	const firstOfMonth = firstDateOfMonth(selectedYear, selectedMonth, 1)
 	const start = dayOfTheWeekOf(firstOfMonth, weekStart, weekStart);
+
+
+	const [leftAnchor,setLeftAnchor] = useState(options.anchor !== "right")
+
+	useEffect(()  => {
+		setLeftAnchor(options.anchor !== "right")
+		if (options.anchor !== "auto"){
+			return;
+		}
+		// @ts-ignore
+		const  _ref: HTMLDivElement = ref.current;
+		if (!_ref){
+			return;
+		}
+
+		const resize = () => {
+			const rect = _ref.getBoundingClientRect();
+			const screenWidth = window.innerWidth;
+
+			setLeftAnchor(rect.right <= screenWidth)
+		}
+		resize();
+		window.addEventListener("resize",resize);
+		return  () => {
+			window.removeEventListener("resize",resize)
+		}
+	},[ref,options.anchor])
 	
 	return (
-		<div ref={ref} className={twMerge("absolute z-50 block pt-2 top-10", options?.datepickerClassNames)}>
+		<div ref={ref} className={twMerge("absolute z-50 block pt-2 top-10"+(leftAnchor ? "" : "  right-0"), options?.datepickerClassNames)}>
 			<div className={twMerge("inline-block p-4 bg-white rounded-lg shadow-lg dark:bg-gray-700", options?.theme?.background)}>
 				<div>
 					{options?.title && <div className={twMerge("px-2 py-3 font-semibold text-center text-gray-900 dark:text-white", options?.theme?.text)}>{options?.title}</div>}

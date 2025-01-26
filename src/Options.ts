@@ -18,6 +18,7 @@ interface IIcons {
 }
 
 export interface IOptions {
+	anchor?: "left"|"right"|"auto",
 	title?: string
 	autoHide?: boolean
 	todayBtn?: boolean
@@ -40,6 +41,7 @@ export interface IOptions {
 }
 
 const options: IOptions = {
+	anchor: "auto",
 	autoHide: true,
 	todayBtn: true,
 	clearBtn: true,

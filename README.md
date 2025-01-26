@@ -185,6 +185,7 @@ const DemoComponent = () => {
 
 ### IOptions
 
+- anchor?: "auto"|"left"|"right" - Default: `auto`
 - title?: string - Default: `disabled`
 - autoHide?: boolean - Default: `true`
 - todayBtn?: boolean - Default: `true`
