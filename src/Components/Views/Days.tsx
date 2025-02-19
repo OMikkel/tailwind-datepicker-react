@@ -23,7 +23,7 @@ const Days = ({ start }: IDaysProps) => {
 					</span>
 				))}
 			</div>
-			<div className="grid w-64 grid-cols-7">
+			<div className="grid w-64 grid-cols-7 w-full">
 				{[...Array(42)].map((_date, index) => {
 					const current = addDays(start, index)
 					const day = getFormattedDate(current, { day: "numeric" })
